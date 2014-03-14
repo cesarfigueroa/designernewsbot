@@ -19,9 +19,17 @@ module DesignerNews
       @url.gsub(/api-/, '')
     end
 
+    def title_with_badge
+      return title if type.nil?
+      ["[#{type}]", title].join(' ').strip
+    end
+
     def type
-      return 'CSS' if badge == 'css'
-      badge.capitalize
+      case badge
+      when nil then nil
+      when 'css' then 'CSS'
+      else badge.capitalize
+      end
     end
   end
 end
