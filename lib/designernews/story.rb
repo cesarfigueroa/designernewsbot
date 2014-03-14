@@ -21,7 +21,7 @@ module DesignerNews
 
     def title_with_badge
       return title if type.nil?
-      ["[#{type}]", title].join(' ').strip
+      ["[#{type}]", title].join(' ')
     end
 
     def type
