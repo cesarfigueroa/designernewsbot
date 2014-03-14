@@ -1,7 +1,7 @@
 module DesignerNews
   class Story
     include StoryFormatter
-    
+
     attr_reader :title
 
     def initialize(hash)
@@ -17,6 +17,10 @@ module DesignerNews
 
     def url
       @url.gsub(/api-/, '')
+    end
+
+    def type
+      @type ||= StoryType.determine(self)
     end
   end
 end
