@@ -8,14 +8,14 @@ module DesignerNews
 
     class << self
       def recent
-        stories = get('/stories/recent')['stories']
+        stories = get('/stories/recent', :stories)
         stories.map { |story| Story.new(story) }
       end
 
       private
 
-      def get(path)
-        super(path).parsed_response
+      def get(path, key)
+        super(path).parsed_response[key.to_s]
       end
     end
   end
