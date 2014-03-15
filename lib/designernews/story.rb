@@ -2,10 +2,10 @@ module DesignerNews
   class Story
     include StoryFormatter
 
-    attr_reader :title, :comment, :vote_count, :badge
+    attr_reader :title, :badge
 
     def initialize(hash)
-      ['title', 'comment', 'url', 'badge', 'vote_count', 'created_at'].each do |key|
+      ['title', 'url', 'badge', 'created_at'].each do |key|
         instance_variable_set("@#{key}", hash.fetch(key))
       end
     end
