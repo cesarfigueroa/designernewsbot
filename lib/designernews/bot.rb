@@ -1,8 +1,8 @@
 module DesignerNews
   class Bot
     def self.update!
-      Stories.new.recent.each do |story|
-        $twitter.update(StoryFormatter.format(story)) if story.new?
+      Stories.recent.each do |story|
+        Twitter.api.update(story.tweet) if story.new?
       end
     end
   end
