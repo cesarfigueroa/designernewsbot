@@ -16,7 +16,7 @@ module DesignerNews
     end
 
     def url
-      @url.gsub(/api-/, '')
+      @url.sub(/api-/, '')
     end
   end
 end
