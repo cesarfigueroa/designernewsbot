@@ -6,7 +6,7 @@ module DesignerNews
 
     def initialize(hash)
       ['title', 'url', 'badge', 'created_at'].each do |key|
-        instance_variable_set("@#{key}", hash.fetch(key))
+        instance_variable_set("@#{key}", hash[key])
       end
     end
 
