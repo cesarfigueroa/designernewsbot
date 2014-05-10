@@ -1,23 +1,27 @@
 module DesignerNews
   module StoryFormatter
-    SHORT_URL_LENGTH_HTTPS = 23
-    WHITESPACE = 2
-    MAX_TWEET_LENGTH = 140 - SHORT_URL_LENGTH_HTTPS - WHITESPACE
+    LENGTHS = {
+      :tweet => 140,
+      :short_url_https => 23,
+      :whitespace => 3
+    }.freeze
 
     def tweet
-      [title_with_badge.truncate(MAX_TWEET_LENGTH), url].join(' ')
+      [title.strip.truncate(max_length), hashtag, url].compact.join(' ')
     end
 
-    def title_with_badge
-      if badge
-        [title.strip, hashtag].join(' ')
+    def max_length
+      if hashtag
+        LENGTHS.values.inject(:-) - hashtag.length
       else
-        title.strip
+        LENGTHS.values.inject(:-)
       end
     end
 
     def hashtag
-      badge.sub('_', '').prepend('#')
+      if badge
+        badge.sub('_', '').prepend('#')
+      end
     end
   end
 end
