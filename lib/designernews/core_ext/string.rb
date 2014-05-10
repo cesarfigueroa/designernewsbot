@@ -1,7 +1,7 @@
 class String
-  def truncate(position, omission = '…')
+  def truncate(position)
     if self.length > position
-      self.slice(0, position).concat(omission)
+      self.slice(0, position).concat('…')
     else
       self
     end
