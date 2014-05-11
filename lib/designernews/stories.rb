@@ -6,17 +6,15 @@ module DesignerNews
     default_params :client_id => ENV['DESIGNER_NEWS_CLIENT_ID']
     format :json
 
-    class << self
-      def recent
-        stories = get('/stories/recent', :stories)
-        stories.map { |story| Story.new(story) }
-      end
+    def self.recent
+      stories = get('/stories/recent', :stories)
+      stories.map { |story| Story.new(story) }
+    end
 
-      private
+    private
 
-      def get(path, key)
-        super(path).parsed_response[key.to_s]
-      end
+    def self.get(path, key)
+      super(path).parsed_response[key.to_s]
     end
   end
 end
