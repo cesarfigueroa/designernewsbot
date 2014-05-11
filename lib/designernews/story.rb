@@ -5,7 +5,7 @@ module DesignerNews
     attr_reader :title, :badge
 
     def initialize(hash)
-      ['title', 'url', 'badge', 'created_at'].each do |key|
+      %w(title url badge created_at).each do |key|
         instance_variable_set(key.prepend('@'), hash[key])
       end
     end
