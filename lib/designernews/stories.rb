@@ -14,7 +14,7 @@ module DesignerNews
     private
 
     def self.get(path, key)
-      super(path).parsed_response[key.to_s]
+      super(path).parsed_response.fetch(key.to_s)
     end
   end
 end
