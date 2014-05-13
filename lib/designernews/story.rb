@@ -6,7 +6,7 @@ module DesignerNews
 
     def initialize(hash)
       %w(title url badge created_at).each do |key|
-        instance_variable_set(key.prepend('@'), hash.fetch(key))
+        instance_variable_set("@#{key}", hash.fetch(key))
       end
     end
 
