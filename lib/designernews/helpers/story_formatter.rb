@@ -7,7 +7,11 @@ module DesignerNews
     }.freeze
 
     def tweet
-      [title.strip.truncate(max_length), hashtag, url].compact.join(' ')
+      [body, hashtag, url].compact.join(' ')
+    end
+
+    def body
+      title.strip.truncate(max_length)
     end
 
     def max_length
